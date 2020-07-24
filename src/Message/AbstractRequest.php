@@ -92,6 +92,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function sendData($data)
     {
+        // var_dump($this->xmlSerialize($data));die();
         $httpResponse = $this->httpClient->request($this->getHttpMethod(),$this->getEndpoint(), ['Content-Type' => 'text/xml; charset=utf-8'], $this->xmlSerialize($data));
         return $this->createResponse($httpResponse->getBody()->getContents(), $httpResponse->getHeaders());
     }

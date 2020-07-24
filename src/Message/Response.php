@@ -107,5 +107,15 @@ class Response extends AbstractResponse
         return isset($this->data['Token']) ? $this->data['Token'] : null;
     }
 
+    /**
+     * Return transaction reference
+     *
+     * @return string
+     */
+    public function getHtmlFormData()
+    {
+        return isset($this->data['HTMLFormData']) ? $this->data['HTMLFormData'] : null;
+    }
+
 
 }

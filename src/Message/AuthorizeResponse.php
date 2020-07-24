@@ -105,4 +105,14 @@ class AuthorizeResponse extends AbstractResponse
     {
         return isset($this->data['CreditCardTransactionResults']['TokenizedPAN']) ? $this->data['CreditCardTransactionResults']['TokenizedPAN'] : null;
     }
+
+    /**
+     * Return transaction reference
+     *
+     * @return string
+     */
+    public function getHtmlFormData()
+    {
+        return isset($this->data['HTMLFormData']) ? $this->data['HTMLFormData'] : null;
+    }
 }

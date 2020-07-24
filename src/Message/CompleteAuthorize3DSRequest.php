@@ -5,7 +5,7 @@ namespace Omnipay\FirstAtlanticCommerce\Message;
 
 use PhpParser\Node\Stmt\Switch_;
 
-class Authorize3DSRequest extends AbstractRequest
+class CompleteAuthorize3DSRequest extends AbstractRequest
 {
     /**
      * @var string;
@@ -150,11 +150,12 @@ class Authorize3DSRequest extends AbstractRequest
         {
             $billingDetails['BillToState'] = $this->getCard()->validateState();
         }
-        
+
         $data = [
             'TransactionDetails' => $transactionDetails,
             'CardDetails'        => $cardDetails,
-            'MerchantResponseURL'=> $this->getMerchantResponseURL(),
+            'MerchantResponseURL'=> 'https://test.com/test',
+            // 'MerchantResponseURL'=> $this->getMerchantResponseURL(),
             'BillingDetails'     => $billingDetails,
             // 'threeDSecureDetails'     => $threeDSecureDetails
         ];
@@ -239,31 +240,41 @@ class Authorize3DSRequest extends AbstractRequest
         return $this->setParameter('transactionStain', $value);
     }
 
-    public function setMerchantResponseURL($value)
-    {
-        return $this->setParameter('merchantResponseUrl', $value);
-    }
-
+    /**
+     * @return mixed
+     */
     public function getMerchantResponseURL()
     {
-        return $this->getParameter('merchantResponseUrl');
+        return $this->getParameter('MerchantResponseURL');
     }
 
+    /**
+     * @return mixed
+     */
     public function getAuthenticationResult()
     {
         return $this->getParameter('authenticationResult');
     }
 
+    /**
+     * @return mixed
+     */
     public function getCavvValue()
     {
         return $this->getParameter('cavvValue');
     }
 
+    /**
+     * @return mixed
+     */
     public function getEciIndicatorValue()
     {
         return $this->getParameter('eciIndicatorValue');
     }
 
+    /**
+     * @return mixed
+     */
     public function getTransactionStain()
     {
         return $this->getParameter('transactionStain');

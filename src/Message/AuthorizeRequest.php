@@ -28,7 +28,7 @@ class AuthorizeRequest extends AbstractRequest
      *
      * @var int;
      */
-    protected $transactionCode = 0;
+    protected $transactionCode = 64;
 
     /**
      * Returns the signature for the request.
@@ -127,6 +127,7 @@ class AuthorizeRequest extends AbstractRequest
         $data = [
             'TransactionDetails' => $transactionDetails,
             'CardDetails'        => $cardDetails,
+            'MerchantResponseURL'=> 'https://test.com/test',
             'BillingDetails'     => $billingDetails
         ];
 

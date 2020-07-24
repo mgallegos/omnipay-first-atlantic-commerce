@@ -88,6 +88,15 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
+    public function completeAuthorize3DS(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\FirstAtlanticCommerce\Message\CompleteAuthorize3DSRequest', $parameters);
+    }
+
+    /**
      * Capture Request.
      *
      * Capture an amount you have previously authorized.
