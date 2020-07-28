@@ -54,6 +54,16 @@ class Response extends AbstractResponse
     }
 
     /**
+     * Return transaction reference
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
      * @return null
      */
     public function getTransactionReference()
@@ -116,6 +126,5 @@ class Response extends AbstractResponse
     {
         return isset($this->data['HTMLFormData']) ? $this->data['HTMLFormData'] : null;
     }
-
 
 }
