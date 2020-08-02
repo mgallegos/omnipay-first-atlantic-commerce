@@ -41,13 +41,16 @@ class Response extends AbstractResponse
      */
     public function isSuccessful()
     {
-        if ( isset($this->data['CreditCardTransactionResults']['ResponseCode']) && $this->data['CreditCardTransactionResults']['ResponseCode'] == 1){
+        if ( isset($this->data['CreditCardTransactionResults']['ResponseCode']) && $this->data['CreditCardTransactionResults']['ResponseCode'] == 1)
+        {
             return true;
         }
-        elseif (isset($this->data['ResponseCode']) && $this->data['ResponseCode'] == 1){
+        elseif (isset($this->data['ResponseCode']) && $this->data['ResponseCode'] == 1)
+        {
             return true;
         }
-        elseif (isset($this->data['ResponseCode']) && $this->data['ResponseCode'] == 0){
+        elseif (isset($this->data['ResponseCode']) && $this->data['ResponseCode'] == 0)
+        {
             return true;
         }
         return false;
@@ -77,6 +80,20 @@ class Response extends AbstractResponse
     public function getTransactionId()
     {
         return isset($this->data['OrderNumber']) ? $this->data['OrderNumber'] : null;
+    }
+
+    /**
+     * @return null
+     */
+    public function getResponseCode()
+    {
+        if (isset($this->data['CreditCardTransactionResults']['ResponseCode'])){
+            return $this->data['CreditCardTransactionResults']['ResponseCode'];
+        }
+        elseif (isset($this->data['ResponseCode'])){
+            return $this->data['ResponseCode'];
+        }
+        return null;
     }
 
     /**
