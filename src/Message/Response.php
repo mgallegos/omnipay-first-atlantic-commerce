@@ -53,6 +53,10 @@ class Response extends AbstractResponse
         {
             return true;
         }
+        elseif (isset($this->data['Success']) && 'true' === $this->data['Success'])
+        {
+            return true;
+        }
         return false;
     }
 
@@ -120,6 +124,9 @@ class Response extends AbstractResponse
         }
         elseif (isset($this->data['ResponseCodeDescription'])){
             return $this->data['ResponseCodeDescription'];
+        }
+        elseif (isset($this->data['ErrorMsg'])){
+            return $this->data['ErrorMsg'];
         }
         return null;
     }
