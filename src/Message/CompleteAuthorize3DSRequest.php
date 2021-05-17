@@ -62,7 +62,8 @@ class CompleteAuthorize3DSRequest extends AbstractRequest
         if ( $this->getCardReference() )
         {
             $this->validate('cardReference');
-            $this->getCard()->validate('cvv', 'expiryMonth', 'expiryYear');
+            // $this->getCard()->validate('cvv', 'expiryMonth', 'expiryYear');
+            $this->getCard()->validate('expiryMonth', 'expiryYear');
 
             $cardDetails = [
                 'CardCVV2'       => $this->getCard()->getCvv(),
